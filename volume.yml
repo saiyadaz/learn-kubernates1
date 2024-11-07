@@ -9,6 +9,12 @@ spec:
       volumeMounts:
         - name: nginx-path
           mountPath: /usr/share/nginx/html
-  volumes:
+initContainers:
+   - name: nginx-content
+     image: rkalluru/78-nginx:v1
+     volumeMounts:
+       - name: nginx-path
+         mountPath: /usr/share/nginx/html
+volumes:
     - name: nginx-path
       emptyDir: {}
