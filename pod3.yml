@@ -11,7 +11,7 @@ spec:
           mountPath: /usr/share/nginx/html
 initContainers:
   - name: nginx-content
-    image: rkalluru/78-nginx:v2
+    image: zaidi1412/expense
     volumeMounts:
       - name: nginx-path
         mountPath: /usr/share/nginx/html
