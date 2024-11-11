@@ -28,8 +28,6 @@ initContainers:
     volumeMounts:
         - mountPath: /data
           name: vault
-        - name: schema
-          image:
           volumeMounts:
         - mountPath: /data
           name: vault
