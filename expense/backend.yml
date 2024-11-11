@@ -32,6 +32,7 @@
   containers:
       - name: backend
         image: 058264231458.dkr.ecr.us-east-1.amazonaws.com/expense-backend:v1
+        command: ["sleep", "1000"]
         volumeMounts:
         - mountPath: /data
           name: vault
