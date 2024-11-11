@@ -10,7 +10,7 @@
     - name: vault
       emptyDir:
       sizeLimit: 5Mi
-initContainers:
+  initContainers:
     - name: vault
       image: 058264231458.dkr.ecr.us-east-1.amazonaws.com/vault-init-container:latest
       env:
@@ -29,7 +29,7 @@ initContainers:
     - mountPath: /data
       name: vault
 
-containers:
+  containers:
       - name: backend
         image: 058264231458.dkr.ecr.us-east-1.amazonaws.com/expense-backend:v2
       - mountPath: /data
