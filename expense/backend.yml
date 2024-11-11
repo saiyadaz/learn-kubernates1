@@ -1,7 +1,7 @@
  apiVersion: v1
  kind: Pod
  metadata:
-  name: backend
+  name: backend1
   labels:
     appName: backend
     projectName: expense
@@ -34,7 +34,7 @@ initContainers:
         - mountPath: /data
           name: vault
 containers:
-      - name: backend
+      - name: backend1
         image: 058264231458.dkr.ecr.us-east-1.amazonaws.com/expense-backend:v2
       - mountPath: /data
         name: vault
