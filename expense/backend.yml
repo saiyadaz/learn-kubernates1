@@ -11,27 +11,28 @@
       emptyDir:
         sizeLimit: 5Mi
 initContainers:
-  - name: vault
-    image: 058264231458.dkr.ecr.us-east-1.amazonaws.com/vault-init-container:latest
-    env:
-    - name: VAULT_ADDR
-      value: "https://vault-internal.devopssz14.online:8200"
-    - name: VAULT_TOKEN
-    valueFrom:
-        secretKeyRef:
-         name: vault-token
-         key: token
+- name: vault
+image: 058264231458.dkr.ecr.us-east-1.amazonaws.com/vault-init-container:latest
+env:
+- name: VAULT_ADDR
+  value: "https://vault-internal.devopssz14.online:8200"
+- name: VAULT_TOKEN
+valueFrom:
+    secretKeyRef:
+     name: vault-token
+     key: token
     -name: SECRET_NAME
-    value: expense-dev/backend
-  - name: VAULT_SKIP_VERIFY
-    value: "TRUE"
-    volumeMounts:
+ value: expense-dev/backend
+
+- name: VAULT_SKIP_VERIFY
+ value: "TRUE"
+ volumeMounts:
         - mountPath: /data
           name: vault
           volumeMounts:
         - mountPath: /data
           name: vault
-    containers:
+containers:
       - name: backend
         image: 058264231458.dkr.ecr.us-east-1.amazonaws.com/expense-backend:v2
       - mountPath: /data
