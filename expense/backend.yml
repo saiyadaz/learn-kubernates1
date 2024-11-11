@@ -1,8 +1,40 @@
-apiVersion: v1
-kind: Pod
-metadata:
+ apiVersion: v1
+ kind: Pod
+ metadata:
   name: backend
-spec:
-  containers:
-    - name: backend
-      image: 058264231458.dkr.ecr.us-east-1.amazonaws.com/expense-backend:latest
+  labels:
+    appName: backend
+    projectName: expense
+ spec:
+  volumes:
+    - name: vault
+      emptyDir:
+        sizeLimit: 5Mi
+initContainers:
+  - name: vault
+    image: 058264231458.dkr.ecr.us-east-1.amazonaws.com/vault-init-container:latest
+    env:
+    - name: VAULT_ADDR
+      value: "https://vault-internal.devopssz14.online:8200"
+    - name: VAULT_TOKEN
+    valueFrom:
+        secretKeyRef:
+         name: vault-token
+         key: token
+    -name: SECRET_NAME
+    value: expense-dev/backend
+  - name: VAULT_SKIP_VERIFY
+    value: TRUE
+    volumeMounts:
+        - mountPath: /data
+          name: vault
+        - name: schema
+          image:
+          volumeMounts:
+        - mountPath: /data
+          name: vault
+containers:
+      - name: backend
+        image: 058264231458.dkr.ecr.us-east-1.amazonaws.com/expense-backend:latest
+      - mountPath: /data
+        name: vault
