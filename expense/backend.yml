@@ -34,7 +34,7 @@ initContainers:
         - mountPath: /data
           name: vault
     containers:
-      - name: backend1
+      - name: backend
         image: 058264231458.dkr.ecr.us-east-1.amazonaws.com/expense-backend:v2
       - mountPath: /data
         name: vault
