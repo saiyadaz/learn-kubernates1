@@ -6,8 +6,8 @@ metadata:
      appName: nginx
 spec:
   containers:
-    -name: nginx
-    image: nginx
+    - name: nginx
+      image: nginx
 
 ---
 
@@ -19,9 +19,9 @@ spec:
   selector:
     appName: nginx
   ports:
-  - name: http
-    protocols: TCP
-    port: 80
+   - name: http
+     protocols: TCP
+     port: 80
 
 
 ---
