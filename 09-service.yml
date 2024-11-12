@@ -18,11 +18,11 @@ metadata:
 spec:
   selector:
     appName: nginx
-ports:
- - name: http
-   protocols: TCP
-   port: 80
-   targetPort: 9376
+  ports:
+  - name: http
+    protocols: TCP
+    port: 80
+
 
 ---
 apiVersion: v1
