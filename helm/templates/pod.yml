@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: git pullv1
 kind: Pod
 metadata:
   name: {{ .Values.pod_name }}
