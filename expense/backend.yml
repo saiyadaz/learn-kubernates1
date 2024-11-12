@@ -40,3 +40,16 @@
         volumeMounts:
         - mountPath: /data
           name: vault
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    appName: backend
+    projectName: backend
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
