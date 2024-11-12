@@ -28,7 +28,11 @@
       volumeMounts:
         - mountPath: /data
           name: vault
-
+    - name: schema
+      image: 058264231458.dkr.ecr.us-east-1.amazonaws.com/schema-init-container:latest
+      volumeMounts:
+      - mountPath: /data
+        name: vault
   containers:
       - name: backend
         image: 058264231458.dkr.ecr.us-east-1.amazonaws.com/expense-backend:v1
